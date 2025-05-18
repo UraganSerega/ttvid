@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Переход...</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f8f8;
+      text-align: center;
+      padding: 40px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .notice {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #333;
+    }
+    #redirectBtn {
+      background: #00A2FF;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: none;
+    }
+    #redirectBtn:hover {
+      background: #0085D6;
+    }
+    .tiktok-message {
+      display: none;
+      font-size: 16px;
+      margin-top: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/photo.jpg" alt="Инструкция"> <!-- Исправленный путь -->
+  <p class="notice" id="notice">
+    Нажми "Открыть в браузере" в TikTok, чтобы продолжить
+  </p>
+  <div class="tiktok-message" id="tiktokMessage">
+    <p>1. Нажмите <strong>•••</strong> в правом верхнем углу</p>
+    <p>2. Выберите <strong>"Открыть в браузере"</strong></p>
+  </div>
+  <button id="redirectBtn" onclick="redirectToOnlyFans()">
+    Перейти на OnlyFans
+  </button>
 
+  <script>
+    function redirectToOnlyFans() {
+      window.location.href = "https://onlyfans.com/bambybelle/c159";
+    }
+
+    window.onload = function () {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isTikTok = userAgent.includes("tiktok");
+
+      if (!isTikTok) {
+        document.getElementById("redirectBtn").style.display = "inline-block";
+        document.getElementById("notice").textContent = "Нажмите кнопку ниже, чтобы перейти на OnlyFans";
+        document.getElementById("tiktokMessage").style.display = "none";
+      } else {
+        document.getElementById("tiktokMessage").style.display = "block";
+      }
+    };
+  </script>
+</body>
+</html>
