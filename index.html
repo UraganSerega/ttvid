@@ -71,15 +71,31 @@
     </div>
   </div>
 
-  <script>
-    // Проверяем, открыто ли в TikTok
-    const isTikTok = /tiktok/i.test(navigator.userAgent);
+<script>
+  // Улучшенное определение TikTok
+  function isTikTokBrowser() {
+    // 1. Проверка по User-Agent
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (/tiktok/i.test(userAgent)) return true;
     
-    if (!isTikTok) {
-      // Если в браузере - показываем кнопку
-      document.getElementById('tiktok-view').classList.add('hidden');
-      document.getElementById('browser-view').classList.remove('hidden');
-    }
-  </script>
+    // 2. Проверка по параметрам встроенного браузера
+    if (window.__tiktok !== undefined) return true;
+    
+    // 3. Проверка по размерам экрана (дополнительная)
+    const isMobile = window.innerWidth < 768;
+    const isPortrait = window.innerHeight > window.innerWidth;
+    
+    return isMobile && isPortrait && !/chrome|firefox|safari/i.test(userAgent);
+  }
+
+  // Логика отображения
+  if (isTikTokBrowser()) {
+    document.getElementById('tiktok-view').style.display = 'block';
+    document.getElementById('browser-view').style.display = 'none';
+  } else {
+    document.getElementById('tiktok-view').style.display = 'none';
+    document.getElementById('browser-view').style.display = 'block';
+  }
+</script>
 </body>
 </html>
