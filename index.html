@@ -3,128 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Continue in Browser</title>
+  <title>Open in Browser</title>
   <style>
     body {
-      font-family: 'Segoe UI', Roboto, sans-serif;
-      background: #f8f9fa;
-      text-align: center;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fafafa;
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      box-sizing: border-box;
     }
     .card {
-      width: 90%;
-      max-width: 400px;
       background: white;
-      padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
-    .app-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 20px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #FF0066, #FF0066);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
+    .preview-image {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    h1 {
-      color: #212529;
-      font-size: 22px;
-      margin-bottom: 8px;
+    .content {
+      padding: 25px;
     }
-    .instructions {
-      color: #495057;
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .description {
       font-size: 15px;
+      color: #666;
       line-height: 1.5;
-      margin: 20px 0;
+      margin-bottom: 25px;
+      text-align: center;
     }
     .step {
       display: flex;
       align-items: center;
-      margin: 15px 0;
-      text-align: left;
+      margin-bottom: 18px;
     }
     .step-number {
-      background: #FF0066;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #FF0066, #FF0066);
       color: white;
-      width: 24px;
-      height: 24px;
       border-radius: 50%;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       margin-right: 12px;
-      flex-shrink: 0;
       font-size: 14px;
+      flex-shrink: 0;
     }
     .step-text {
-      flex-grow: 1;
+      font-size: 15px;
+      color: #444;
     }
     .continue-btn {
-      background: #FF0066;
+      background: linear-gradient(135deg, #FF0066, #FF0066);
       color: white;
       border: none;
-      padding: 14px 28px;
-      border-radius: 8px;
+      width: 100%;
+      padding: 16px;
+      border-radius: 10px;
       font-size: 16px;
       font-weight: 500;
+      margin-top: 20px;
       cursor: pointer;
-      margin-top: 25px;
-      width: 100%;
       transition: all 0.2s;
       display: none;
     }
     .continue-btn:hover {
-      background: #e0005e;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(255,0,102,0.2);
+      box-shadow: 0 6px 12px rgba(255,0,102,0.2);
     }
     .divider {
+      height: 1px;
+      background: #eee;
       margin: 25px 0;
-      border-top: 1px solid #e9ecef;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="app-icon">E</div>
-    <h1>Continue in Browser</h1>
-    
-    <div id="tiktok-view">
-      <p class="instructions">For full functionality, please open this link in your web browser</p>
+  <div class="container">
+    <div class="card">
+      <!-- Изображение будет здесь -->
+      <img src="images/photo.jpg" class="preview-image" alt="Preview">
       
-      <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-text">Tap the <strong>•••</strong> menu in top right corner</div>
+      <div class="content">
+        <h1 class="title">Continue in Browser</h1>
+        <p class="description">For full experience, open this link in your web browser</p>
+        
+        <!-- Инструкция для TikTok -->
+        <div id="tiktok-view">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-text">Tap <strong>•••</strong> in top right corner</div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-text">Select <strong>"Open in browser"</strong></div>
+          </div>
+        </div>
+        
+        <div class="divider" id="divider"></div>
+        
+        <!-- Кнопка для браузера -->
+        <div id="browser-view">
+          <button class="continue-btn" onclick="window.location.href='https://onlyfans.com/bambybelle/c159'">
+            Continue to OnlyFans
+          </button>
+        </div>
       </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-text">Select <strong>"Open in browser"</strong> from the menu</div>
-      </div>
-    </div>
-    
-    <div class="divider" id="divider" style="display:none;"></div>
-    
-    <div id="browser-view" style="display:none;">
-      <button class="continue-btn" onclick="window.location.href='https://onlyfans.com/bambybelle/c159'">
-        Continue to OnlyFans
-      </button>
     </div>
   </div>
 
   <script>
-    // Enhanced browser detection
+    // Улучшенное определение in-app браузеров
     function isInAppBrowser() {
       const ua = navigator.userAgent.toLowerCase();
       return ua.includes('tiktok') || 
@@ -133,12 +141,14 @@
              ua.includes('snssdk');
     }
 
-    // Show appropriate view
-    if (!isInAppBrowser()) {
-      document.getElementById('tiktok-view').style.display = 'none';
-      document.getElementById('browser-view').style.display = 'block';
-      document.getElementById('divider').style.display = 'block';
-    }
+    // Показываем соответствующий контент
+    document.addEventListener('DOMContentLoaded', function() {
+      const inApp = isInAppBrowser();
+      
+      document.getElementById('tiktok-view').style.display = inApp ? 'block' : 'none';
+      document.getElementById('browser-view').style.display = inApp ? 'none' : 'block';
+      document.getElementById('divider').style.display = inApp ? 'none' : 'block';
+    });
   </script>
 </body>
 </html>
