@@ -10,32 +10,25 @@
       background: #f5f5f5;
       text-align: center;
       padding: 20px;
-      color: #333;
+      margin: 0;
     }
     .container {
       max-width: 500px;
-      margin: 0 auto;
+      margin: 20px auto;
       background: white;
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1 {
-      color: #000;
-      font-size: 24px;
-      margin-bottom: 5px;
-    }
-    h2 {
-      color: #FF0066;
-      font-size: 20px;
-      margin-top: 0;
-    }
+    h1 { color: #000; font-size: 24px; margin: 5px 0; }
+    h2 { color: #FF0066; font-size: 20px; margin: 10px 0; }
     .instructions {
       text-align: left;
       margin: 20px 0;
       padding: 15px;
       background: #f9f9f9;
       border-radius: 8px;
+      border-left: 4px solid #FF0066;
     }
     .btn {
       background: #FF0066;
@@ -45,13 +38,11 @@
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      margin-top: 15px;
-      text-decoration: none;
+      margin: 15px 0;
       display: inline-block;
+      text-decoration: none;
     }
-    .hidden {
-      display: none;
-    }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -59,10 +50,10 @@
     <h1>17:43</h1>
     <h2>Epaysep</h2>
     
-    <div id="tiktok-view">
+    <div id="tiktok-view" class="hidden">
       <div class="instructions">
         <h3>Open in Instagram</h3>
-        <p>To get the best experience, click <strong>...</strong> in the top right, and select <strong>"Open in browser"</strong></p>
+        <p>To get the best experience, click <strong>•••</strong> in the top right, and select <strong>"Open in browser"</strong></p>
       </div>
     </div>
     
@@ -71,31 +62,29 @@
     </div>
   </div>
 
-<script>
-  // Улучшенное определение TikTok
-  function isTikTokBrowser() {
-    // 1. Проверка по User-Agent
-    const userAgent = navigator.userAgent.toLowerCase();
-    if (/tiktok/i.test(userAgent)) return true;
-    
-    // 2. Проверка по параметрам встроенного браузера
-    if (window.__tiktok !== undefined) return true;
-    
-    // 3. Проверка по размерам экрана (дополнительная)
-    const isMobile = window.innerWidth < 768;
-    const isPortrait = window.innerHeight > window.innerWidth;
-    
-    return isMobile && isPortrait && !/chrome|firefox|safari/i.test(userAgent);
-  }
+  <script>
+    // Улучшенное определение TikTok (работает в 2024)
+    function detectTikTok() {
+      try {
+        // 1. Проверка WebView
+        if (window.TikTok !== undefined) return true;
+        
+        // 2. Проверка User-Agent
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('tiktok') || ua.includes('snssdk')) return true;
+        
+        // 3. Проверка по поведению
+        if (!window.chrome && window.innerWidth < 500) return true;
+      } catch(e) {}
+      return false;
+    }
 
-  // Логика отображения
-  if (isTikTokBrowser()) {
-    document.getElementById('tiktok-view').style.display = 'block';
-    document.getElementById('browser-view').style.display = 'none';
-  } else {
-    document.getElementById('tiktok-view').style.display = 'none';
-    document.getElementById('browser-view').style.display = 'block';
-  }
-</script>
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+      const isTT = detectTikTok();
+      document.getElementById('tiktok-view').style.display = isTT ? 'block' : 'none';
+      document.getElementById('browser-view').style.display = isTT ? 'none' : 'block';
+    });
+  </script>
 </body>
 </html>
