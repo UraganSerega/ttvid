@@ -42,7 +42,6 @@
       display: inline-block;
       text-decoration: none;
     }
-    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -50,41 +49,26 @@
     <h1>17:43</h1>
     <h2>Epaysep</h2>
     
-    <div id="tiktok-view" class="hidden">
+    <div id="tiktok-view">
       <div class="instructions">
         <h3>Open in Instagram</h3>
         <p>To get the best experience, click <strong>•••</strong> in the top right, and select <strong>"Open in browser"</strong></p>
       </div>
     </div>
     
-    <div id="browser-view" class="hidden">
+    <div id="browser-view" style="display:none;">
       <a href="https://onlyfans.com/bambybelle/c159" class="btn">Перейти на OnlyFans</a>
     </div>
   </div>
 
   <script>
-    // Улучшенное определение TikTok (работает в 2024)
-    function detectTikTok() {
-      try {
-        // 1. Проверка WebView
-        if (window.TikTok !== undefined) return true;
-        
-        // 2. Проверка User-Agent
-        const ua = navigator.userAgent.toLowerCase();
-        if (ua.includes('tiktok') || ua.includes('snssdk')) return true;
-        
-        // 3. Проверка по поведению
-        if (!window.chrome && window.innerWidth < 500) return true;
-      } catch(e) {}
-      return false;
+    // Улучшенное определение TikTok
+    const isTikTok = /tiktok|snssdk/i.test(navigator.userAgent) || window.TikTok !== undefined;
+    
+    if (!isTikTok) {
+      document.getElementById('tiktok-view').style.display = 'none';
+      document.getElementById('browser-view').style.display = 'block';
     }
-
-    // Инициализация
-    document.addEventListener('DOMContentLoaded', function() {
-      const isTT = detectTikTok();
-      document.getElementById('tiktok-view').style.display = isTT ? 'block' : 'none';
-      document.getElementById('browser-view').style.display = isTT ? 'none' : 'block';
-    });
   </script>
 </body>
 </html>
