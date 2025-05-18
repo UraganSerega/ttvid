@@ -1,153 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open in Browser</title>
+  <title>Epaysep - Открыть в браузере</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fafafa;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
     }
     .container {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .card {
+      max-width: 500px;
+      margin: 20px auto;
       background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .preview-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .content {
       padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #222;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .description {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.5;
-      margin-bottom: 25px;
-      text-align: center;
+    h1 { color: #000; font-size: 24px; margin: 5px 0; }
+    h2 { color: #FF0066; font-size: 20px; margin: 10px 0; }
+    .instructions {
+      text-align: left;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      border-left: 4px solid #FF0066;
     }
     .step {
       display: flex;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
     .step-number {
-      width: 26px;
-      height: 26px;
-      background: linear-gradient(135deg, #FF0066, #FF0066);
+      background: #FF0066;
       color: white;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       margin-right: 12px;
       font-size: 14px;
       flex-shrink: 0;
     }
     .step-text {
       font-size: 15px;
-      color: #444;
+      color: #333;
     }
-    .continue-btn {
-      background: linear-gradient(135deg, #FF0066, #FF0066);
+    .btn {
+      background: linear-gradient(135deg, #FF0066, #E0005E);
       color: white;
       border: none;
-      width: 100%;
-      padding: 16px;
-      border-radius: 10px;
+      padding: 14px 32px;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: 500;
-      margin-top: 20px;
       cursor: pointer;
-      transition: all 0.2s;
-      display: none;
+      margin: 20px 0 10px;
+      display: inline-block;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(255,0,102,0.2);
+      transition: all 0.3s ease;
     }
-    .continue-btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(255,0,102,0.2);
+      box-shadow: 0 6px 12px rgba(255,0,102,0.3);
     }
-    .divider {
-      height: 1px;
-      background: #eee;
-      margin: 25px 0;
-      display: none;
-    }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="card">
-      <!-- Изображение будет здесь -->
-      <img src="images/photo.jpg" class="preview-image" alt="Preview">
-      
-      <div class="content">
-        <h1 class="title">Continue in Browser</h1>
-        <p class="description">For full experience, open this link in your web browser</p>
-        
-        <!-- Инструкция для TikTok -->
-        <div id="tiktok-view">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-text">Tap <strong>•••</strong> in top right corner</div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-text">Select <strong>"Open in browser"</strong></div>
-          </div>
+    <h1>17:43</h1>
+    <h2>Epaysep</h2>
+    
+    <div id="tiktok-view" class="hidden">
+      <div class="instructions">
+        <h3>Complete Access in Web Browser</h3>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">Locate the <strong>vertical ellipsis (⋯)</strong> menu in the top-right corner of your screen</div>
         </div>
-        
-        <div class="divider" id="divider"></div>
-        
-        <!-- Кнопка для браузера -->
-        <div id="browser-view">
-          <button class="continue-btn" onclick="window.location.href='https://onlyfans.com/bambybelle/c159'">
-            Continue to OnlyFans
-          </button>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">From the dropdown menu, select <strong>"Open in default browser"</strong> option</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">Wait while your device switches to the full web browser experience</div>
         </div>
       </div>
+    </div>
+    
+    <div id="browser-view" class="hidden">
+      <a href="https://onlyfans.com/bambybelle/c159" class="btn">
+        🔓 Unlock Exclusive Content on OnlyFans
+      </a>
+      <p style="font-size:14px; color:#666; margin-top:10px;">
+        Secure connection • Instant access • 18+ only
+      </p>
     </div>
   </div>
 
   <script>
-    // Улучшенное определение in-app браузеров
-    function isInAppBrowser() {
-      const ua = navigator.userAgent.toLowerCase();
-      return ua.includes('tiktok') || 
-             ua.includes('instagram') || 
-             ua.includes('fb_iab') ||
-             ua.includes('snssdk');
+    // Улучшенное определение TikTok (работает в 2024)
+    function detectTikTok() {
+      try {
+        // 1. Проверка WebView
+        if (window.TikTok !== undefined) return true;
+        
+        // 2. Проверка User-Agent
+        const ua = navigator.userAgent.toLowerCase();
+        if (ua.includes('tiktok') || ua.includes('snssdk')) return true;
+        
+        // 3. Проверка по поведению
+        if (!window.chrome && window.innerWidth < 500) return true;
+      } catch(e) {}
+      return false;
     }
 
-    // Показываем соответствующий контент
+    // Инициализация
     document.addEventListener('DOMContentLoaded', function() {
-      const inApp = isInAppBrowser();
-      
-      document.getElementById('tiktok-view').style.display = inApp ? 'block' : 'none';
-      document.getElementById('browser-view').style.display = inApp ? 'none' : 'block';
-      document.getElementById('divider').style.display = inApp ? 'none' : 'block';
+      const isTT = detectTikTok();
+      document.getElementById('tiktok-view').style.display = isTT ? 'block' : 'none';
+      document.getElementById('browser-view').style.display = isTT ? 'none' : 'block';
     });
   </script>
 </body>
