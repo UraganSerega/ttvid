@@ -1,73 +1,143 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Epaysep - Открыть в браузере</title>
+  <title>Continue in Browser</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
       text-align: center;
-      padding: 20px;
+      padding: 0;
       margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .container {
-      max-width: 500px;
-      margin: 20px auto;
+    .card {
+      width: 90%;
+      max-width: 400px;
       background: white;
-      padding: 25px;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: linear-gradient(135deg, #FF0066, #FF0066);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
     }
-    h1 { color: #000; font-size: 24px; margin: 5px 0; }
-    h2 { color: #FF0066; font-size: 20px; margin: 10px 0; }
+    h1 {
+      color: #212529;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
     .instructions {
-      text-align: left;
+      color: #495057;
+      font-size: 15px;
+      line-height: 1.5;
       margin: 20px 0;
-      padding: 15px;
-      background: #f9f9f9;
-      border-radius: 8px;
-      border-left: 4px solid #FF0066;
     }
-    .btn {
+    .step {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+      text-align: left;
+    }
+    .step-number {
+      background: #FF0066;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+    .step-text {
+      flex-grow: 1;
+    }
+    .continue-btn {
       background: #FF0066;
       color: white;
       border: none;
-      padding: 12px 30px;
+      padding: 14px 28px;
       border-radius: 8px;
       font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
-      margin: 15px 0;
-      display: inline-block;
-      text-decoration: none;
+      margin-top: 25px;
+      width: 100%;
+      transition: all 0.2s;
+      display: none;
+    }
+    .continue-btn:hover {
+      background: #e0005e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255,0,102,0.2);
+    }
+    .divider {
+      margin: 25px 0;
+      border-top: 1px solid #e9ecef;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>17:43</h1>
-    <h2>Epaysep</h2>
+  <div class="card">
+    <div class="app-icon">E</div>
+    <h1>Continue in Browser</h1>
     
     <div id="tiktok-view">
-      <div class="instructions">
-        <h3>Open in Instagram</h3>
-        <p>To get the best experience, click <strong>•••</strong> in the top right, and select <strong>"Open in browser"</strong></p>
+      <p class="instructions">For full functionality, please open this link in your web browser</p>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-text">Tap the <strong>•••</strong> menu in top right corner</div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-text">Select <strong>"Open in browser"</strong> from the menu</div>
       </div>
     </div>
     
+    <div class="divider" id="divider" style="display:none;"></div>
+    
     <div id="browser-view" style="display:none;">
-      <a href="https://onlyfans.com/bambybelle/c159" class="btn">Перейти на OnlyFans</a>
+      <button class="continue-btn" onclick="window.location.href='https://onlyfans.com/bambybelle/c159'">
+        Continue to OnlyFans
+      </button>
     </div>
   </div>
 
   <script>
-    // Улучшенное определение TikTok
-    const isTikTok = /tiktok|snssdk/i.test(navigator.userAgent) || window.TikTok !== undefined;
-    
-    if (!isTikTok) {
+    // Enhanced browser detection
+    function isInAppBrowser() {
+      const ua = navigator.userAgent.toLowerCase();
+      return ua.includes('tiktok') || 
+             ua.includes('instagram') || 
+             ua.includes('fb_iab') ||
+             ua.includes('snssdk');
+    }
+
+    // Show appropriate view
+    if (!isInAppBrowser()) {
       document.getElementById('tiktok-view').style.display = 'none';
       document.getElementById('browser-view').style.display = 'block';
+      document.getElementById('divider').style.display = 'block';
     }
   </script>
 </body>
