@@ -3,36 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Переход...</title>
+  <title>Epaysep - Открыть в браузере</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
+      background: #f5f5f5;
       text-align: center;
       padding: 20px;
+      color: #333;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #000;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #FF0066;
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .instructions {
+      text-align: left;
       margin: 20px 0;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 8px;
     }
     .btn {
       background: #FF0066;
       color: white;
-      padding: 12px 25px;
-      border-radius: 5px;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
       text-decoration: none;
       display: inline-block;
-      margin-top: 15px;
-      font-size: 16px;
-    }
-    .instructions {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: 0 auto;
     }
     .hidden {
       display: none;
@@ -40,13 +55,15 @@
   </style>
 </head>
 <body>
-  <div class="instructions">
-    <img src="images/photo.jpg?v=4" alt="Инструкция" style="width:100%; max-width:500px;">
+  <div class="container">
+    <h1>17:43</h1>
+    <h2>Epaysep</h2>
     
     <div id="tiktok-view">
-      <h2>Для перехода:</h2>
-      <p>1. Нажмите <strong>•••</strong> в верхнем углу</p>
-      <p>2. Выберите "Открыть в браузере"</p>
+      <div class="instructions">
+        <h3>Open in Instagram</h3>
+        <p>To get the best experience, click <strong>...</strong> in the top right, and select <strong>"Open in browser"</strong></p>
+      </div>
     </div>
     
     <div id="browser-view" class="hidden">
@@ -55,14 +72,12 @@
   </div>
 
   <script>
-    // Определяем, открыто ли в TikTok
+    // Проверяем, открыто ли в TikTok
     const isTikTok = /tiktok/i.test(navigator.userAgent);
     
-    if (isTikTok) {
-      // Показываем инструкцию для TikTok
-      document.getElementById('tiktok-view').classList.remove('hidden');
-    } else {
-      // Показываем кнопку перехода
+    if (!isTikTok) {
+      // Если в браузере - показываем кнопку
+      document.getElementById('tiktok-view').classList.add('hidden');
       document.getElementById('browser-view').classList.remove('hidden');
     }
   </script>
